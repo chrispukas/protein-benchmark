@@ -1,0 +1,25 @@
+2025-08-23 23:02:13 Error: Option '--preprocessing-threads' requires an argument.
+2025-08-23 23:02:26 Error: Option '--preprocessing-threads' requires an argument.
+2025-08-23 23:03:37 Usage: boltz predict [OPTIONS] DATA
+2025-08-23 23:03:37 Try 'boltz predict --help' for help.
+2025-08-23 23:03:37 
+2025-08-23 23:03:37 Error: Invalid value for 'DATA': Path '/gt/fv' does not exist.
+2025-08-23 23:03:43 Usage: boltz predict [OPTIONS] DATA
+2025-08-23 23:03:43 Try 'boltz predict --help' for help.
+2025-08-23 23:03:43 
+2025-08-23 23:03:43 Error: Invalid value for 'DATA': Path '/gt/vhh' does not exist.
+2025-08-23 23:04:29 Usage: boltz predict [OPTIONS] DATA
+2025-08-23 23:04:29 Try 'boltz predict --help' for help.
+2025-08-23 23:04:29 
+2025-08-23 23:04:29 Error: Invalid value for 'DATA': Path '/gt/fv' does not exist.
+2025-08-23 23:04:35 Usage: boltz predict [OPTIONS] DATA
+2025-08-23 23:04:35 Try 'boltz predict --help' for help.
+2025-08-23 23:04:35 
+2025-08-23 23:04:35 Error: Invalid value for 'DATA': Path '/gt/vhh' does not exist.
+2025-08-23 23:04:40 Usage: boltz predict [OPTIONS] DATA
+2025-08-23 23:04:40 Try 'boltz predict --help' for help.
+2025-08-23 23:04:40 
+2025-08-23 23:04:40 Error: Invalid value for 'DATA': Path '/random_chain/fv' does not exist.
+2025-08-25 08:06:39 Error: Option '--preprocessing-threads' requires an argument.
+2025-08-25 08:08:09 Error: Option '--preprocessing-threads' requires an argument.
+2025-08-25 08:10:44 Error: Option '--preprocessing-threads' requires an argument.
