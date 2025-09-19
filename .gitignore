@@ -20,3 +20,5 @@ dist/
 .git
 protein-benchmark/datasets/*
 protein-benchmark/model_outputs/*
+
+scripts/slurm/*
