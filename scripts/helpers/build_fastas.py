@@ -3,14 +3,14 @@ import os
 
 from datetime import datetime
 
-import incito_pipeline.util.parse.fasta
-import rcsbapi.sequence as sequence
-import incito_pipeline.util.data_utility as data_utility
+import protein_benchmark.io.fasta as fasta
+import protein_benchmark.query.rcsbapi.sequence as sequence
+import protein_benchmark.data_utility as data_utility
 
 from importlib.resources import files
-from incito_pipeline.util import data_utility
+from protein_benchmark.data_utility import data_utility
 
-DATASET_PATH = files("incito_pipeline.datasets")
+DATASET_PATH = files("protein_benchmark.datasets")
 CUTOFF_DATE = datetime(2023, 1, 6)
 
 file_names_VHHs = data_utility.get_file_names(
@@ -34,7 +34,7 @@ data_utility.build_fastas_from_pdb(os.path.join(DATASET_PATH, "AF3_independent_t
 #data_utility.build_fastas_from_pdb(os.path.join(DATASET_PATH, "AF3_independent_test_Fv_GroundTruth"),
 #             os.path.join(DATASET_PATH, "out/FASTAS_Fv"), single_output=True, cutoff_date=CUTOFF_DATE)
 
-incito_pipeline.util.parse.fasta.build_fastas_from_pdb(os.path.join(DATASET_PATH, "AF3_independent_test_VHHs_GroundTruth"),
+fasta.build_fastas_from_pdb(os.path.join(DATASET_PATH, "AF3_independent_test_VHHs_GroundTruth"),
             os.path.join(DATASET_PATH, "out/run_full/vhhs/fastas_vhhs"), 
             single_output=True, cutoff_date=CUTOFF_DATE)
 

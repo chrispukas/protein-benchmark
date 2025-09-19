@@ -1,1 +1,1 @@
-# Protein Benchmarking using DockQ
+# Protein Benchmarking Pipeline

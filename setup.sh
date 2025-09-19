@@ -1,29 +1,27 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -e
+ENVIRONMENT_NAME="protein_benchmark_env"
 
-env_name="incito_pipeline"
 
-eval "$(conda shell.bash hook)"
-
-# Install mamba if not present
-if ! command -v mamba &>/dev/null; then
-    conda install mamba -n base -c conda-forge
+if ! command -v conda &> /dev/null; then
+    echo "Conda could not be found. Please install Conda first."
+    exit 1
 fi
 
-conda env remove -n $env_name -y || true
-mamba env create -n $env_name --file environment.yml
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-pip install https://github.com/openmm/pdbfixer/archive/refs/tags/1.9.tar.gz
 
-# Activate env
-conda activate $env_name
+source "$(conda info --base)/etc/profile.d/conda.sh"
 
-# Set LD_LIBRARY_PATH activation/deactivation scripts
-mkdir -p $CONDA_PREFIX/etc/conda/activate.d
-mkdir -p $CONDA_PREFIX/etc/conda/deactivate.d
-echo "export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:\$LD_LIBRARY_PATH" > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
-echo "unset LD_LIBRARY_PATH" > $CONDA_PREFIX/etc/conda/deactivate.d/env_vars.sh
+# Create conda environment with required dependencies
+conda env list | grep -q "^${ENVIRONMENT_NAME}\s" || conda create --name "$ENVIRONMENT_NAME" python=3.12 -y
+conda activate "$ENVIRONMENT_NAME" || exit 1
+echo "Environment '$ENVIRONMENT_NAME' is now active."
 
-# (Optional) pip install your package itself if not editable
-pip install .
+if [ -f "environment.yml" ]; then
+    echo "Updating environment from environment.yml..."
+    conda env update --file environment.yml --prune -y
+fi
+
+
+# Install local package
+echo "Installing local package in editable mode..."
+pip install -e . || { echo "Failed to install local package"; exit 1; }
